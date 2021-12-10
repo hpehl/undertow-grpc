@@ -19,13 +19,14 @@
 
 package io.undertow.grpc.test.helloworld;
 
+import java.io.IOException;
+
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Server that manages startup/shutdown of a {@code Greeter} server.
@@ -47,7 +48,7 @@ public class NettyServerTestCase {
             String user = "world";
             String result = client.greet(user);
 
-            Assert.assertEquals("hello world", result);
+            assertEquals("hello world", result);
         } finally {
             client.shutdown();
             server.shutdownNow();

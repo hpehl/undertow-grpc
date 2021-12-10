@@ -19,16 +19,17 @@
 
 package io.undertow.grpc.test.helloworld;
 
+import java.io.IOException;
+
 import io.grpc.Server;
 import io.grpc.stub.StreamObserver;
 import io.undertow.Undertow;
 import io.undertow.UndertowOptions;
 import io.undertow.grpc.UndertowServerBuilder;
 import io.undertow.server.handlers.ResponseCodeHandler;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author Stuart Douglas
@@ -61,7 +62,7 @@ public class UndertowGRPCTestCase {
             String user = "world";
             String result = client.greet(user);
 
-            Assert.assertEquals("hello world", result);
+            assertEquals("hello world", result);
         } finally {
             client.shutdown();
         }
